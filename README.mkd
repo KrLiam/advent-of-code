@@ -1,2 +1,17 @@
 # Advent Of Code
 
+My solutions to the Advent of Code challenge.
+
+## Installation
+
+This package uses `poetry`.
+
+`poetry install`
+
+## Usage
+
+Use `poetry run solve <year> <day>` to run the solution for the puzzle of the
+given year and day.
+
+By default, this command runs the first part of the puzzle. To run the second part,
+use `poetry run solve <year> <day> --part-2`.
