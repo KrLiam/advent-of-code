@@ -16,6 +16,9 @@ def solve_puzzle(year: int, day: int, part_two: bool = False):
     name = "part_2" if part_two else f"part_1"
     solve = getattr(module, name)
 
-    answer = solve(input)
+    if isinstance(input, tuple):
+        answer = solve(*input)
+    else:
+        answer = solve(input)
 
     print(f"The answer is {answer}")
