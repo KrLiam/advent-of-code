@@ -82,6 +82,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "numpy"
+version = "1.23.5"
+description = "NumPy is the fundamental package for array computing with Python."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[[package]]
 name = "pathspec"
 version = "0.10.3"
 description = "Utility library for gitignore style pattern matching of file paths."
@@ -143,7 +151,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "44864e0e4ce27624ea0d7f716e13190c3c5a1fe1156660c1ad25f52b3d30022b"
+content-hash = "fda1af6c657591838fb6beaedfd30304856971d5b0b6dd4a90a3c6cb7647144a"
 
 [metadata.files]
 black = []
@@ -154,6 +162,7 @@ click = []
 colorama = []
 idna = []
 mypy-extensions = []
+numpy = []
 pathspec = []
 platformdirs = []
 requests = []
