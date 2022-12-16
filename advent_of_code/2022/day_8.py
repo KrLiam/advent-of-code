@@ -25,6 +25,12 @@ def is_visible(trees: list[list[int]], i: int, j: int):
     return False
 
 
+def part_1(trees: list[list[int]]):
+    return sum(
+        is_visible(trees, i, j) for i in range(len(trees)) for j in range(len(trees[0]))
+    )
+
+
 def get_view_distance(trees: list[list[int]], i: int, j: int):
     this_height = trees[i][j]
     row = trees[i]
