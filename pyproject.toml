@@ -15,7 +15,7 @@ numpy = "^1.23.5"
 black = "^22.12.0"
 
 [tool.poetry.scripts]
-"solve" = "scripts:solve"
+"solve" = "advent_of_code.scripts:solve"
 
 [tool.black]
 target-version = ["py310"]
