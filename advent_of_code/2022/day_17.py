@@ -24,28 +24,23 @@ def move_rock(rock: list[tuple[int, int]], delta: tuple[int, int]):
     return [(x + dx, y + dy) for x, y in rock]
 
 
-def get_min(rock: list[tuple[int, int]], i: int):
-    return min(*(pos[i] for pos in rock))
+def get_min(rock: list[tuple[int, int]], axis: int):
+    return min(pos[axis] for pos in rock)
 
 
-def get_max(rock: list[tuple[int, int]], i: int):
-    return max(*(pos[i] for pos in rock))
+def get_max(rock: list[tuple[int, int]], axis: int):
+    return max(pos[axis] for pos in rock)
 
 
 def print_rocks(rocks: set[tuple[int, int]]):
     highest_y = get_max(rocks, 1)
 
     for y in range(highest_y, 0, -1):
-        line = ""
-
-        for x in range(0, 7):
-            line += "#" if (x, y) in rocks else "."
-
-        print(line)
+        print("\n".join("#" if (x, y) in rocks else "." for x in range(0, 7)))
 
 
-def part_1(jets: list[str]):
-    rocks = set()
+def simulation(jets: list[str], rock_amount: int, rocks: set[tuple[int, int]] = None):
+    rocks = set() if rocks is None else rocks
     rock_i = 0
     jet_i = 0
     jet_amt = len(jets)
@@ -54,7 +49,7 @@ def part_1(jets: list[str]):
     highest_y = 0
     rock_count = 0
 
-    while rock_count < 2022:
+    while rock_count < rock_amount:
         if active_rock is None:
             active_rock = create_rock(rock_i % 5, (2, highest_y + 4))
             rock_i += 1
@@ -81,4 +76,50 @@ def part_1(jets: list[str]):
         else:
             active_rock = fall_pos
 
+        yield jet_i, jet_amt, rock_count, highest_y
+
+
+def part_1(jets: list[str]):
+    for _, _, _, highest_y in simulation(jets, 2022):
+        ...
+
     return highest_y
+
+
+def part_2(jets: list[str]):
+    jet_amt = len(jets)
+
+    samples = []
+    total_rocks = 1_000_000_000_000
+    total_y = 0
+
+    waiting_rest = False
+
+    for jet_i, jet_amt, rocks, highest_y in simulation(jets, 69696969):
+        if jet_i % jet_amt == 0:
+            samples.append((rocks, highest_y))
+
+            if len(samples) < 2:
+                continue
+
+            (rocks_a, y_a), (rocks_b, y_b) = samples
+
+            rocks_by_interval = rocks_b - rocks_a
+            y_increase_by_interval = y_b - y_a
+
+            total_rocks -= rocks_a
+            total_y += y_a
+
+            interval_repeat = total_rocks // rocks_by_interval
+            interval_rest = total_rocks % rocks_by_interval
+
+            waiting_rest = True
+
+        if waiting_rest and rocks >= (rocks_b + interval_rest):
+            rest_y = highest_y - y_b
+            break
+
+    total_rocks -= interval_repeat * rocks_by_interval + interval_rest
+    total_y += interval_repeat * y_increase_by_interval + rest_y
+
+    return total_y
