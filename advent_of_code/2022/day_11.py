@@ -100,3 +100,18 @@ def part_1(monkeys: dict[int, Monkey]):
                 monkeys[receiver_id].receive_item(item)
 
     return get_business_level(monkeys)
+
+
+def part_2(monkeys: dict[int, Monkey]):
+    mod = 1
+    for monkey in monkeys.values():
+        mod *= monkey.test
+
+    for _ in range(10_000):
+        for monkey in monkeys.values():
+            for receiver_id, item in monkey.round(relief=False):
+                item %= mod
+
+                monkeys[receiver_id].receive_item(item)
+
+    return get_business_level(monkeys)
