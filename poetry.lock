@@ -74,6 +74,18 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
+name = "mpmath"
+version = "1.2.1"
+description = "Python library for arbitrary-precision floating-point arithmetic"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+develop = ["pytest (>=4.6)", "pycodestyle", "pytest-cov", "codecov", "wheel"]
+tests = ["pytest (>=4.6)"]
+
+[[package]]
 name = "mypy-extensions"
 version = "0.4.3"
 description = "Experimental type system extensions for programs checked with the mypy typechecker."
@@ -128,6 +140,17 @@ socks = ["PySocks (>=1.5.6,!=1.5.7)"]
 use_chardet_on_py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
+name = "sympy"
+version = "1.11.1"
+description = "Computer algebra system (CAS) in Python"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+mpmath = ">=0.19"
+
+[[package]]
 name = "tomli"
 version = "2.0.1"
 description = "A lil' TOML parser"
@@ -151,7 +174,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "fda1af6c657591838fb6beaedfd30304856971d5b0b6dd4a90a3c6cb7647144a"
+content-hash = "d1ac65c5fca549f8ea57adebc7fdc8e3c7a0df6477e92e8918705e2f60d1ed15"
 
 [metadata.files]
 black = []
@@ -161,10 +184,12 @@ charset-normalizer = []
 click = []
 colorama = []
 idna = []
+mpmath = []
 mypy-extensions = []
 numpy = []
 pathspec = []
 platformdirs = []
 requests = []
+sympy = []
 tomli = []
 urllib3 = []
