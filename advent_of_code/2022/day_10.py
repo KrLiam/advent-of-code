@@ -76,7 +76,7 @@ def part_2(instructions: list[tuple[str, int]]):
         counter, X, _ = res
         pos = (counter - 1) % WIDTH
 
-        row.append("#" if abs(X - pos) <= 1 else ".")
+        row.append("💀" if abs(X - pos) <= 1 else "  ")
 
         if len(row) >= WIDTH:
             crt.append(row)
