@@ -36,6 +36,5 @@ def part_2(document: list[str]):
         digits = re.findall(pattern, line)
         first, last = digits[0], digits[-1]
         sum += int(DIGITS.get(first, first) + DIGITS.get(last, last))
-    
-    return sum
 
+    return sum
