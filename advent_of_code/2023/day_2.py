@@ -52,5 +52,5 @@ def part_2(games):
         power = red * green * blue
         sum += power
         print(f"power is {power}")
-    
+
     return sum
