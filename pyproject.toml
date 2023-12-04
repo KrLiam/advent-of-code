@@ -17,6 +17,7 @@ black = "^22.12.0"
 
 [tool.poetry.scripts]
 "solve" = "advent_of_code.scripts:solve"
+"create" = "advent_of_code.scripts:create"
 
 [tool.black]
 target-version = ["py310"]
