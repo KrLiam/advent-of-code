@@ -1,4 +1,3 @@
-
 from pathlib import Path
 
 from .download import load_input
@@ -15,6 +14,7 @@ def part_2(fixme: Fixme) -> int:
     ...
 """
 
+
 def create_solution(year: int, day: int):
     load_input(year, day)
 
@@ -23,7 +23,6 @@ def create_solution(year: int, day: int):
 
     if script.exists():
         return
-    
+
     script.parent.mkdir(parents=True, exist_ok=True)
     script.write_text(TEMPLATE, encoding="utf-8")
-
